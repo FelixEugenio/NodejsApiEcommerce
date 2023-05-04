@@ -10,12 +10,14 @@ const {AuthMiddleware} = require('../middlewares/AuthMiddleware');
 const {IsAdminMiddleware} = require('../middlewares/IsAdminMiddleware');
 const {BlockUserController} = require('../controllers/Users/BlockUserController');
 const {UnBlockUserController} = require('../controllers/Users/UnblockUserController');
+const {LogoutUserController} = require('../controllers/Auth/LogoutUserController');
 const router = express.Router();
 
 // user Routes
 router.post('/register',CreateUserController);
 router.post('/login',LoginUserController);
 router.get('/users',ListUsersController);
+router.get('/logout',LogoutUserController);
 router.get('/refresh',HandleRefreshTokenController);
 router.get('/:id',AuthMiddleware,IsAdminMiddleware,GetSingleUserController);
 router.delete('/:id',DeleteUserController);
