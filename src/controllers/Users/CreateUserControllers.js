@@ -1,5 +1,6 @@
 const User = require('../../models/Users/UserModels');
 const asyncHandler = require('express-async-handler');
+const {RefreshToken} = require('../../config/RefreshToken');
 
 const CreateUserController = asyncHandler(async (req,res)=>{
 
