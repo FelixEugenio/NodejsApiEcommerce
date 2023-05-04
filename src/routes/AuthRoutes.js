@@ -16,7 +16,10 @@ router.post('/login',LoginUserController);
 router.get('/users',ListUsersController);
 router.get('/:id',AuthMiddleware,IsAdminMiddleware,GetSingleUserController);
 router.delete('/:id',DeleteUserController);
-router.put('/:id',UpdateUserController);
+router.put('/:id',AuthMiddleware,UpdateUserController);
+router.put('block-user/:id',AuthMiddleware,IsAdminMiddleware,UpdateUserController);
+router.put('unblock-user/:id',AuthMiddleware,IsAdminMiddleware,UpdateUserController);
+
 
 
 module.exports = router;

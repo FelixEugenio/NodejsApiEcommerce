@@ -4,9 +4,9 @@ const asyncHandler = require('express-async-handler');
 const UpdateUserController = asyncHandler(async(req,res)=>{
 
 try{
-const {id} = req.params;
+const {_id} = req.user;
 
-const UpdateSingleUser = await User.findByIdAndUpdate(id,{
+const UpdateSingleUser = await User.findByIdAndUpdate(_id,{
     firstname:req?.body?.firstname,
     lastname:req?.body?.lastname,
     email:req?.body?.email,
