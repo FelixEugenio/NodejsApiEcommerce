@@ -8,6 +8,8 @@ const {DeleteUserController} = require('../controllers/Users/DeleteUserControlle
 const {UpdateUserController} = require('../controllers/Users/UpdateUserController');
 const {AuthMiddleware} = require('../middlewares/AuthMiddleware');
 const {IsAdminMiddleware} = require('../middlewares/IsAdminMiddleware');
+const {BlockUserController} = require('../controllers/Users/BlockUserController');
+const {UnBlockUserController} = require('../controllers/Users/UnblockUserController');
 const router = express.Router();
 
 // user Routes
@@ -17,8 +19,8 @@ router.get('/users',ListUsersController);
 router.get('/:id',AuthMiddleware,IsAdminMiddleware,GetSingleUserController);
 router.delete('/:id',DeleteUserController);
 router.put('/:id',AuthMiddleware,UpdateUserController);
-router.put('block-user/:id',AuthMiddleware,IsAdminMiddleware,UpdateUserController);
-router.put('unblock-user/:id',AuthMiddleware,IsAdminMiddleware,UpdateUserController);
+router.put('/block-user/:id',AuthMiddleware,IsAdminMiddleware,BlockUserController);
+router.put('/unblock-user/:id',AuthMiddleware,IsAdminMiddleware,UnBlockUserController);
 
 
 
